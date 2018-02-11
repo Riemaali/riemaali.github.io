@@ -8,13 +8,14 @@
 	<body>
 		<script type="text/javascript">
 
-			d3.csv("food.csv", function(data) {
+			
+			dvar data;
+                        d3.csv("food.csv", function(data) {});
 			d3.select("body").selectAll("p")
 				.data(data)
 				.enter()
 				.append("p")
 				.text(function(d) { return d; });
-			});
 
 		</script>
 	</body>
