@@ -9,8 +9,11 @@
 		<script type="text/javascript">
 
 			d3.csv("food.csv", function(data) {
-			$("#console_out_div").append("<p>" + data[0] + "</p>");       
-    
+			d3.select("body").selectAll("p")
+				.data(dataset)
+				.enter()
+				.append("p")
+				.text(function(d) { return d; });
 			});
 		</script>
 	</body>
