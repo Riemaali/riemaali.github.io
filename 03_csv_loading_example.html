@@ -9,10 +9,10 @@
 		<script type="text/javascript">
 
 			
-			
-                        d3.csv("food.csv", function(data) {});
+			var dataset
+                        d3.csv("food.csv", function(dataset=data) {});
 			d3.select("body").selectAll("p")
-				.data(data)
+				.data(dataset)
 				.enter()
 				.append("p")
 				.text(function(d) { return d; });
