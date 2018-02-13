@@ -8,10 +8,10 @@
                  background-color: skyblue;
 			  color:red;
                        }
-		  #second {
+		  #item2 {
                  font: normal 10pt Verdana, Arial, sans-serif !important;/* <-- fonts */;
-                 background-color: gray;
-			  color:black;
+                 background-color: blue;
+			  color:white;
                        }
 	  </style>
 		<meta charset="utf-8">
@@ -25,7 +25,7 @@
 			
 		</div> 
 		
-		<div id= "second"> 
+		<div id= "item2"> 
 		<div id= "visualization2"> </div>
 		<div id= "button"></div>
 	        </div> 
@@ -34,10 +34,10 @@
 		
 			var dataset = [ 5, 10, 15, 20, 25 ];
 			
-			d3.select("body").selectAll("div")
+			d3.select("div").selectAll("p")
 				.data(dataset)
 				.enter()
-				.append("div")
+				.append("p")
 				.text(function(d) {
 			 return "I can count up to " + d;
 				
