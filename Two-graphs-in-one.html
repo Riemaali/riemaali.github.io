@@ -34,10 +34,10 @@
 		
 			var dataset = [ 5, 10, 15, 20, 25 ];
 			
-			d3.select("div").selectAll("div")
+			d3.select("body").selectAll("div")
 				.data(dataset)
 				.enter()
-				.append("p")
+				.append("div")
 				.text(function(d) {
 			 return "I can count up to " + d;
 				
