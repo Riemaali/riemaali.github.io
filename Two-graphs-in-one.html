@@ -8,6 +8,11 @@
                  background-color: skyblue;
 			  color:red;
                        }
+		  #visualization {
+                 font: normal 10pt Verdana, Arial, sans-serif !important;/* <-- fonts */;
+                 background-color: skyblue;
+			  color:black;
+                       }
 	  </style>
 		<meta charset="utf-8">
 		<title>D3: Inserting additional text into paragraphs</title>
@@ -24,7 +29,7 @@
 		
 			var dataset = [ 5, 10, 15, 20, 25 ];
 			
-			d3.select("div").selectAll("p")
+			d3.select("div").selectAll("div")
 				.data(dataset)
 				.enter()
 				.append("p")
