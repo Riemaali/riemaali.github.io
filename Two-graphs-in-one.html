@@ -1,1 +1,68 @@
 
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+          <style type="text/css"> 
+		  body {
+                 font: bold 16pt Verdana, Arial, sans-serif !important;/* <-- fonts */;
+                 background-color: blue;
+			  color:red;
+                       }
+	  </style>
+		<meta charset="utf-8">
+		<title>D3: Inserting additional text into paragraphs</title>
+		<script type="text/javascript" src="../d3.js"></script>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+		
+			var dataset = [ 5, 10, 15, 20, 25 ];
+			
+			d3.select("body").selectAll("p")
+				.data(dataset)
+				.enter()
+				.append("p")
+				.text(function(d) {
+					return "I can count up to " + d;
+				});
+			
+		</script>
+		// Adds the svg canvas
+var chart2 = d3.select("body")
+    .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+        
+// Get the data
+d3.csv("food.csv", function(error, data) {
+    data.forEach(function(d) {
+        d.Food = parseDate(d.date);
+        d.deliciousness = +d.close;
+    });
+
+    // Scale the range of the data
+    x.domain(d3.extent(data, function(d) { return d.date; }));
+    y.domain([0, d3.max(data, function(d) { return d.close; })]);
+
+    // Add the valueline path.
+    chart2.append("path")
+        .attr("class", "line")
+        .attr("d", valueline(data));
+
+    // Add the X Axis
+    chart2.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    // Add the Y Axis
+    chart2.append("g")
+        .attr("class", "y axis")
+        .call(yAxis);
+
+});
+	</body>
+</html>
