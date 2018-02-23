@@ -14,11 +14,11 @@
 			var StoredVeg;
 			d3.csv("Data_assign.csv",function(data) {
 				dataset = data;
-				 var F_freshFruir = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
+				 var F_freshFruit = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
                                 return dataset.Index == "0";
                                 });
 				
-				var F_StoredFruir = dataset.filter(function(dataset){ // filtering by stored fruit.. 
+				var F_StoredFruit = dataset.filter(function(dataset){ // filtering by stored fruit.. 
                                 return dataset.Index == "1";
                                 });
 				var F_freshVeg = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
@@ -28,7 +28,7 @@
 				var F_StoredVeg = dataset.filter(function(dataset){ // filtering by stored fruit.. 
                                 return dataset.Index == "3";
                                 });
-				FreshFruit = F_freshFruir;
+				FreshFruit = F_freshFruit;
 				StoredFruit = F_StoredFruit;
 				FreshVeg = F_freshVeg;
 				StoredVeg = F_StoredVeg
