@@ -8,18 +8,20 @@
 	<body>
 		<script type="text/javascript">
 			var dataset;// declaring a global variable initially empty and undefined. 
+			var FreshFruit;
 			d3.csv("Data_assign.csv",function(data) {
 				dataset = data;
-				var FreshFruit = dataset.filter(function(dataset){
+				var F_freshFruir = dataset.filter(function(dataset){
                          return dataset.Index == "0";
                              });
-				console.log(dataset);
+				FreshFruit = F_freshFruir;
 				
 			});
 			var w = 600;
 			var h = 250;
-			
-				console.log(FreshFruit);
+		console.log(dataset);
+		console.log(FreshFruit);
+				
            
 		</script>
 	</body>
