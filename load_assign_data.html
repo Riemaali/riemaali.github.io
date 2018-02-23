@@ -69,7 +69,7 @@ var svg = d3.select("body").append("svg")
                                 height = 300 - margin.top - margin.bottom;
 	
   x.domain(dataset.map(function(d) { return d.Month; }));
-  y.domain([0, d3.max(data, function(d) { return d.Count; })]);
+  y.domain([0, d3.max(dataset, function(d) { return d.Count; })]);
 
   svg.append("g")
       .attr("class", "x axis")
