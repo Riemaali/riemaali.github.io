@@ -9,9 +9,9 @@
 		<script type="text/javascript">
 			var dataset;// declaring a global variable initially empty and undefined. 
 			d3.csv("Data_assign.csv",function(data) {
+				console.log(data);
 				dataset = data;
-			console.log(data);
-			});
+			
 			var w = 600;
 			var h = 250;
 
@@ -67,7 +67,7 @@
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "11px")
 			   .attr("fill", "white");
-			
+			});
 			
 		</script>
 	</body>
