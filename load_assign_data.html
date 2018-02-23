@@ -10,14 +10,15 @@
 			var dataset;// declaring a global variable initially empty and undefined. 
 			d3.csv("Data_assign.csv",function(data) {
 				dataset = data;
+				var FreshFruit = dataset.filter(function(dataset){
+                         return dataset.Index == "0";
+                             });
 				console.log(dataset);
 				
 			});
 			var w = 600;
 			var h = 250;
-			var FreshFruit = dataset.filter(function(dataset){
-                         return dataset.Index == "0";
-                             });
+			
 				console.log(FreshFruit);
            
 		</script>
