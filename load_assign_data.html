@@ -5,6 +5,21 @@
 		<title>D3: Loading data from a CSV file</title>
 		<script type="text/javascript" src="../d3.js"></script>
 	</head>
+	<style>
+
+	.axis {
+	  font: 10px sans-serif;
+	}
+
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+
+	</style>
+
 	<body>
 		<script type="text/javascript">
 			var dataset;// declaring a global variable initially empty and undefined. 
@@ -12,6 +27,27 @@
 			var StoredFruit;
 			var FreshVeg;
 			var StoredVeg;
+			width = 600 - margin.left - margin.right,
+                                height = 300 - margin.top - margin.bottom;
+
+var x = d3.scale.ordinal().rangeRoundBands([0, width], .05);
+
+var y = d3.scale.linear().range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(33);
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
 			d3.csv("Data_assign.csv",function(data) {
 				dataset = data;
 				 var F_freshFruit = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
@@ -37,6 +73,44 @@
 				console.log(StoredFruit);
 				console.log(FreshVeg);
 				console.log(StoredVeg);
+				var margin = {top: 20, right: 20, bottom: 70, left: 40},
+                                
+
+	
+  x.domain(data.map(function(d) { return d.Month; }));
+  y.domain([0, d3.max(data, function(d) { return d.Count; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis)
+    .selectAll("text")
+      .style("text-anchor", "end")
+      .attr("dx", "-.8em")
+      .attr("dy", "-.55em")
+      .attr("transform", "rotate(-90)" );
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Value ($)");
+
+  svg.selectAll("bar")
+      .data(dataset)
+    .enter().append("rect")
+      .style("fill", "steelblue")
+      .attr("x", function(d) { return x(d.Month); })
+      .attr("width", x.rangeBand())
+      .attr("y", function(d) { return y(d.Count); })
+      .attr("height", function(d) { return height - y(d.Count); });
+
+});
+
 				
 			});
 			
