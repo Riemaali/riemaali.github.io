@@ -10,6 +10,8 @@
 			var dataset;// declaring a global variable initially empty and undefined. 
 			var FreshFruit;
 			var StoredFruit;
+			var FreshVeg;
+			var StoredVeg;
 			d3.csv("Data_assign.csv",function(data) {
 				dataset = data;
 				F_freshFruir = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
@@ -19,11 +21,22 @@
 				F_StoredFruir = dataset.filter(function(dataset){ // filtering by stored fruit.. 
                                 return dataset.Index == "1";
                                 });
+				F_freshVeg = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
+                                return dataset.Index == "2";
+                                });
+				
+				F_StoredVeg = dataset.filter(function(dataset){ // filtering by stored fruit.. 
+                                return dataset.Index == "3";
+                                });
 				FreshFruit = F_freshFruir;
-				StoredFruit = F_StoredFruir;
+				StoredFruit = F_StoredFruit;
+				FreshVeg = F_freshVeg;
+				StoredVeg = F_StoredVeg
 				console.log(dataset);
 		                console.log(FreshFruit);
-				console.log(FreshFruit);
+				console.log(StoredFruit);
+				console.log(FreshVeg);
+				console.log(StoredVeg);
 				
 			});
 			
