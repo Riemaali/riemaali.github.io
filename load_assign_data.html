@@ -11,7 +11,7 @@
 			var FreshFruit;
 			d3.csv("Data_assign.csv",function(data) {
 				dataset = data;
-				var F_freshFruir = dataset.filter(function(dataset){
+				F_freshFruir = dataset.filter(function(dataset){
                          return dataset.Index == "0";
                              });
 				FreshFruit = F_freshFruir;
