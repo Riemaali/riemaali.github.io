@@ -64,7 +64,7 @@ var svg = d3.select("body").append("svg")
 				console.log(StoredFruit);
 				console.log(FreshVeg);
 				console.log(StoredVeg);
-				dataset= StoredFruit;
+				dataset= StoredVeg;
 				var margin = {top: 20, right: 20, bottom: 70, left: 40},
                                 width = 600 - margin.left - margin.right,
                                 height = 300 - margin.top - margin.bottom;
@@ -79,7 +79,7 @@ var svg = d3.select("body").append("svg")
   
   svg.append("g")
       .attr("class", "y axis")
-       .call(d3.axisLeft(y).ticks(12))
+       .call(d3.axisLeft(y).ticks(13))
     .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
