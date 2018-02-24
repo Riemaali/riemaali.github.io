@@ -96,13 +96,30 @@ var svg = d3.select("body").append("svg")
 				var margin = {top: 20, right: 20, bottom: 70, left: 40},
                                 width = 600 - margin.left - margin.right,
                                 height = 300 - margin.top - margin.bottom;
-	d3.select("#FF")
-	.on("click", function() {
+	                       d3.select("#FF")
+	                       .on("click", function() {
 					//New values for dataset
 					dataset = FreshFruit;
                                            DrawBar(dataset);
-				
-			});
+				});
+				d3.select("#SF")
+	                        .on("click", function() {
+					//New values for dataset
+					dataset = StoredFruit;
+                                           DrawBar(dataset);
+				});
+				d3.select("#FV")
+	                       .on("click", function() {
+					//New values for dataset
+					dataset = FreshVeg;
+                                           DrawBar(dataset);
+				});
+				d3.select("#SV")
+	                        .on("click", function() {
+					//New values for dataset
+					dataset = StoredVeg;
+                                           DrawBar(dataset);
+				});
 			
 	});	
 						
