@@ -23,7 +23,6 @@
 	<body>
 		
 		<script type="text/javascript">
-			var dataset;// declaring a global variable initially empty and undefined. 
 			var FreshFruit;
 			var StoredFruit;
 			var FreshVeg;
@@ -33,7 +32,35 @@
                         height = 300 - margin.top - margin.bottom;
 			var x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
 			var y = d3.scaleLinear().rangeRound([height, 0]);
-			
+function DrawBar(dataset) {
+
+  x.domain(dataset.map(function(d) { return d.Month; }));
+  y.domain([0, d3.max(dataset, function(d) { return d.Count; })]);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+  
+  svg.append("g")
+      .attr("class", "y axis")
+       .call(d3.axisLeft(y).ticks(13))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Value ($)");
+
+  svg.selectAll("bar")
+      .data(dataset)
+    .enter().append("rect")
+      .style("fill", "steelblue")
+      .attr("x", function(d) { return x(d.Month); })
+      .attr("width",x.bandwidth())
+      .attr("y", function(d) { return y(d.Count); })
+      .attr("height", function(d) { return height - y(d.Count); });
+}			
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -73,34 +100,7 @@ var svg = d3.select("body").append("svg")
 	.on("click", function() {
 					//New values for dataset
 					dataset = FreshFruit;
-
-  x.domain(dataset.map(function(d) { return d.Month; }));
-  y.domain([0, d3.max(dataset, function(d) { return d.Count; })]);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
-  
-  svg.append("g")
-      .attr("class", "y axis")
-       .call(d3.axisLeft(y).ticks(13))
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .text("Value ($)");
-
-  svg.selectAll("bar")
-      .data(dataset)
-    .enter().append("rect")
-      .style("fill", "steelblue")
-      .attr("x", function(d) { return x(d.Month); })
-      .attr("width",x.bandwidth())
-      .attr("y", function(d) { return y(d.Count); })
-      .attr("height", function(d) { return height - y(d.Count); });
-
+                                           DrawBar(dataset);
 				
 			});
 			
