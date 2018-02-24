@@ -101,24 +101,25 @@ var svg = d3.select("body").append("svg")
 					//New values for dataset
 					dataset = FreshFruit;
                                            DrawBar(dataset);
+				       d3.select("svg").remove();
 				});
 				d3.select("#SF")
 	                        .on("click", function() {
 					//New values for dataset
-					dataset = StoredFruit;
-                                           DrawBar(dataset);
+                                           DrawBar(StoredFruit);
+					d3.select("svg").remove();
 				});
 				d3.select("#FV")
 	                       .on("click", function() {
-					//New values for dataset
-					dataset = FreshVeg;
-                                           DrawBar(dataset);
+					
+                                           DrawBar(FreshVeg);
+					d3.select("svg").remove();
 				});
 				d3.select("#SV")
 	                        .on("click", function() {
 					//New values for dataset
-					dataset = StoredVeg;
-                                           DrawBar(dataset);
+                                           DrawBar(StoredVeg);
+					d3.select("svg").remove();
 				});
 			
 	});	
