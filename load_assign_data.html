@@ -69,7 +69,10 @@ var svg = d3.select("body").append("svg")
 				var margin = {top: 20, right: 20, bottom: 70, left: 40},
                                 width = 600 - margin.left - margin.right,
                                 height = 300 - margin.top - margin.bottom;
-	
+	d3.select("#FF")
+	.on("click", function() {
+					//New values for dataset
+					dataset = FreshFruit;
 
   x.domain(dataset.map(function(d) { return d.Month; }));
   y.domain([0, d3.max(dataset, function(d) { return d.Count; })]);
@@ -88,10 +91,7 @@ var svg = d3.select("body").append("svg")
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text("Value ($)");
-d3.select("#FF")
-	.on("click", function() {
-					//New values for dataset
-					dataset = FreshFruit;
+
   svg.selectAll("bar")
       .data(dataset)
     .enter().append("rect")
