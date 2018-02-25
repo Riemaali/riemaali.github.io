@@ -1,4 +1,5 @@
-<!DOCTYPE html><script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="http://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=472beb185dc3d62d59bcf893499ebf45"></script><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
+<!DOCTYPE html>
+<script>var __pbpa = true;</script><script>var translated_warning_string = 'Warning: Never enter your Tumblr password unless \u201chttps://www.tumblr.com/login\u201d\x0ais the address in your web browser.\x0a\x0aYou should also see a green \u201cTumblr, Inc.\u201d identification in the address bar.\x0a\x0aSpammers and other bad guys use fake forms to steal passwords.\x0a\x0aTumblr will never ask you to log in from a user\u2019s blog.\x0a\x0aAre you absolutely sure you want to continue?';</script><script type="text/javascript" language="javascript" src="http://assets.tumblr.com/assets/scripts/pre_tumblelog.js?_v=472beb185dc3d62d59bcf893499ebf45"></script><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN"
    "http://www.w3.org/TR/html4/strict.dtd">
 
 
@@ -692,72 +693,7 @@ var svg = d3.select("body").append("svg")
 
 
 
-<iframe scrolling="no" width="1" height="1" frameborder="0" style="background-color:transparent; overflow:hidden; position:absolute; top:0; left:0; z-index:9999;" id="ga_target"></iframe><script type="text/javascript">
-    (function(){
-        var analytics_frame = document.getElementById('ga_target');
-        var analytics_iframe_loaded;
-        var user_logged_in;
-        var blog_is_nsfw = 'No';
-        var addthis_enabled = true;
 
-        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-        var eventer = window[eventMethod];
-        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-        eventer(messageEvent,function(e) {
-            var message = (e.data && e.data.split) ? e.data.split(';') : '';
-            switch (message[0]) {
-                case 'analytics_iframe_loaded':
-                    analytics_iframe_loaded = true;
-                    postCSMessage();
-                    postGAMessage();
-                    postATMessage();
-                    postRapidMessage();
-                    break;
-                case 'user_logged_in':
-                    user_logged_in = message[1];
-                    postGAMessage();
-                    postATMessage();
-                    break;
-            }
-        }, false);
-
-        analytics_frame.src = "https://assets.tumblr.com/analytics.html?a76144f6ac3f4c5ec0b80b2f2a5b4fd0#" +
-                              "http://iquantny.tumblr.com";
-        function postGAMessage() {
-            if (analytics_iframe_loaded && user_logged_in) {
-                var is_ajax = false;
-                analytics_frame.contentWindow.postMessage(['tick_google_analytics', is_ajax, user_logged_in, blog_is_nsfw, '/post/129373499164/this-is-quantifiably-the-best-month-to-go-to-the?route=%2Fpost%2F%3Aid%2F%3Asummary'].join(';'), analytics_frame.src.split('/analytics.html')[0]);
-            }
-        }
-        function postCSMessage() {
-            COMSCORE = true;
-            analytics_frame.contentWindow.postMessage('enable_comscore;' + window.location, analytics_frame.src.split('/analytics.html')[0]);
-        }
-        function postATMessage() {
-            if (addthis_enabled && analytics_iframe_loaded) {
-                analytics_frame.contentWindow.postMessage('enable_addthis', analytics_frame.src.split('/analytics.html')[0]);
-            }
-        }
-        function postRapidMessage() {
-                            if (analytics_iframe_loaded) {
-                    var is_ajax = '';
-                    var route = '/post/:id/:summary';
-                    var tumblelog_id = '170417890';
-                    var yahoo_space_id = '1197719230';
-                    var rapid_client_only = '1';
-                    var apv = '1';
-                    var rapid_ex = '';
-
-                    analytics_frame.contentWindow.postMessage(
-                        [
-                            'tick_rapid', is_ajax, route, user_logged_in, tumblelog_id,
-                            yahoo_space_id, rapid_client_only, apv, rapid_ex
-                        ].join(';'),
-                        analytics_frame.src.split('/analytics.html')[0]
-                    );
-                }
-                    }
-    })();
 </script><script type="text/javascript">!function(s){s.src='https://px.srvcs.tumblr.com/impixu?T=1519201597&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvaXF1YW50bnkudHVtYmxyLmNvbVwvcG9zdFwvMTI5MzczNDk5MTY0XC90aGlzLWlzLXF1YW50aWZpYWJseS10aGUtYmVzdC1tb250aC10by1nby10by10aGUiLCJyZXF0eXBlIjowLCJyb3V0ZSI6IlwvcG9zdFwvOmlkXC86c3VtbWFyeSJ9&U=CMANOPMEKE&K=cfe8ba2b035332f287f3e3ff543dc44e6d1183dfc864847d96ced62873771922&R='.replace(/&R=[^&$]*/,'').concat('&R='+escape(document.referrer)).slice(0,2000).replace(/%.?.?$/,'');}(new Image());</script><noscript><img style="position:absolute;z-index:-3334;top:0px;left:0px;visibility:hidden;" src="https://px.srvcs.tumblr.com/impixu?T=1519201597&J=eyJ0eXBlIjoidXJsIiwidXJsIjoiaHR0cDpcL1wvaXF1YW50bnkudHVtYmxyLmNvbVwvcG9zdFwvMTI5MzczNDk5MTY0XC90aGlzLWlzLXF1YW50aWZpYWJseS10aGUtYmVzdC1tb250aC10by1nby10by10aGUiLCJyZXF0eXBlIjowLCJyb3V0ZSI6IlwvcG9zdFwvOmlkXC86c3VtbWFyeSIsIm5vc2NyaXB0IjoxfQ==&U=CMANOPMEKE&K=9bc829a6dcb673796b68b638212157efc1b2ee705d4f4537b63bd6765fe24c1f&R="></noscript><script >
         (function (w,d) {
             'use strict';
