@@ -492,15 +492,138 @@ As part of a homework assignment, I ask my students at Pratt to go out and chart
 				</p><p>To show the current offerings, we charted how many types of fruits and vegetables are available by month,
 				and showed if they were fresh or from storage.&nbsp;</p>
 				
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
-				<!-- here goes the code we made ------>
+				<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Loading data from a CSV file</title>
+		<script type="text/javascript" src="../d3.js"></script>
+	</head>
+	<style>
+	.axis {
+	  font: 10px sans-serif;
+	}
+	.axis path,
+	.axis line {
+	  fill: none;
+	  stroke: #000;
+	  shape-rendering: crispEdges;
+	}
+	</style>
+
+	<body>
+		
+		<script type="text/javascript">
+			var FreshFruit;
+			var StoredFruit;
+			var FreshVeg;
+			var StoredVeg;
+			margin = {top: 20, right: 20, bottom: 30, left: 40},
+                        width = 600 - margin.left - margin.right,
+                        height = 300 - margin.top - margin.bottom;
+			var x = d3.scaleBand().rangeRound([0, width]).padding(0.1);
+			var y = d3.scaleLinear().rangeRound([height, 0]);
+function DrawBar(dataset) {
+  x.domain(dataset.map(function(d) { return d.Month; }));
+  y.domain([0, d3.max(dataset, function(d) { return d.Count; })]);
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+  
+  svg.append("g")
+      .attr("class", "y axis")
+       .call(d3.axisLeft(y).ticks(13))
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .text("Value ($)");
+  svg.selectAll("bar")
+      .data(dataset)
+    .enter().append("rect")
+      .style("fill", "steelblue")
+      .attr("x", function(d) { return x(d.Month); })
+      .attr("width",x.bandwidth())
+      .attr("y", function(d) { return y(d.Count); })
+      .attr("height", function(d) { return height - y(d.Count); });
+}			
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+			d3.csv("Data_assign.csv",function(data) {
+				dataset = data;
+				 var F_freshFruit = dataset.filter(function(dataset){ // filtering by fresh fruit.. 
+                                return dataset.Index == "0";
+                                });
 				
+				var F_StoredFruit = dataset.filter(function(dataset){ // filtering by stored fruit.. 
+                                return dataset.Index == "1";
+                                });
+				var F_freshVeg = dataset.filter(function(dataset){ // filtering by fresh vegies.. 
+                                return dataset.Index == "2";
+                                });
+				
+				var F_StoredVeg = dataset.filter(function(dataset){ // filtering by stored vegies.. 
+                                return dataset.Index == "3";
+                                });
+				FreshFruit = F_freshFruit;
+				StoredFruit = F_StoredFruit;
+				FreshVeg = F_freshVeg;
+				StoredVeg = F_StoredVeg
+				console.log(dataset);
+		                console.log(FreshFruit);
+				console.log(StoredFruit);
+				console.log(FreshVeg);
+				console.log(StoredVeg);
+				dataset= StoredVeg;
+				var margin = {top: 20, right: 20, bottom: 70, left: 40},
+                                width = 600 - margin.left - margin.right,
+                                height = 300 - margin.top - margin.bottom;
+	                       d3.select("#FF")
+	                       .on("click", function() {
+					//New values for dataset
+					dataset = FreshFruit;
+				       svg.selectAll("*").remove();
+                                           DrawBar(dataset);
+				       
+				});
+				d3.select("#SF")
+	                        .on("click", function() {
+					//New values for dataset
+					svg.selectAll("*").remove();
+                                           DrawBar(StoredFruit);
+					
+				});
+				d3.select("#FV")
+	                       .on("click", function() {
+					svg.selectAll("*").remove();
+                                           DrawBar(FreshVeg);
+					
+				});
+				d3.select("#SV")
+	                        .on("click", function() {
+					//New values for dataset
+					svg.selectAll("*").remove();
+                                           DrawBar(StoredVeg);
+					
+				});
+			
+	});	
+						
+				
+           
+		</script>
+		<p id= "FF"> Click on this text to update the chart with Fresh Fruit data</p> 
+		<p id= "SF"> Click on this text to update the chart with Stored Fruit data</p> 
+		<p id= "FV"> Click on this text to update the chart with Fresh Vegetables data</p>
+		<p id= "SV"> Click on this text to update the chart with Stored Vegetables data</p> 
+	</body>
+</html>
 				
 				If you miss the month of September, you might be behind the fruit curve, but there are plenty more months of vegetables left. &nbsp;The chart shows that fresh vegetables are available 9 out of 12 months, but fruit is only available 5 out of 12. Now if only we could quantify how delicious the produce is&hellip;&nbsp;</p><p>&mdash;&ndash;</p><p>Data from:&nbsp;<a href="https://t.umblr.com/redirect?z=http%3A%2F%2Fwww.grownyc.org%2Fgreenmarket%2Fwhatsavailable&amp;t=MWU3YTNhNmYwMDJkNWUwNWQzOTUwMTZjMzJlMGNhM2E3YzdlNTIxMCwxeHM2a1phNg%3D%3D&amp;b=t%3A5jlxwUw4OZ-2SbgNDPgKMQ&amp;p=http%3A%2F%2Fiquantny.tumblr.com%2Fpost%2F129373499164%2Fthis-is-quantifiably-the-best-month-to-go-to-the&amp;m=1">http://www.grownyc.org/greenmarket/whatsavailable</a></p></p>
 
