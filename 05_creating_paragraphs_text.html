@@ -17,55 +17,59 @@
 				.text(function(d) { return d; });
 			
 		</script>
-<ul>
-		
-		 <li>  Explain in your own words the point of the jitter plot </li>
-<p>A: Jitter plot is dot plot where every point is shifted by a small random amount from its original position (jittering),  
-	which solves the problem when certain tenure occurs more than once in the data set  and the corresponding data points 
-	fall right on top of each other, which makes it impossible to distinguish between them. 
-	</p>
+<lu> 		
+<li>Looking at Fig 3-1, Janert writes "the data itself shows clearly that the amount of random noise in the data is small".
+What do you think his argument is?</li>
+A:The argument is that the curve representing the data is smooth,and not not so many points fall away from the curve of the relationship. Here what matters more is determining the preciseness of the points and not the preciseness of the relationship itself. 
+<li>Can you think of a real-world example of a multivariate relationship like the one in Fig 3-3 (lower right panel)?</li>
+A:In order to investigate which symptoms of a disease correlate with certain body characteristics (Weight, blood sugar, blood pressure … etc), we need to examine the specific symptom with respect to single body category and then follow the relationship between this symptom and a certain type of body characteristic. An example can be put  as follows: 
+The risk of getting intestinal cancer can be investigated by looking at the amount of exercise and the amount of processed food a person consumes per week. Assumably the risk increase with more processed food, which is known for harming the intestines. The risk goes down the greater the amount of exercise the person gets.
 
-     <li> Explain in your own words the point of figure 2-3. 
-	     (I'm going to skip saying "in your own words" going forward,
-	     but I hope you get the point; I expect all answers to be in your own words).</li>
-<p>A: Histogram with the same bin width can look quite different based on the anchor point of the first bin.</p>
+<li>What are the two methods Janert mentions for smoothing noisy data? Can you think of other ones?</li>
+A)He mentions two methods: Splines and LOESS. 
+One simple smoothing method can be the Moving Average Technique which intends to reduce noise in the data by averaging subsets of  the data by the mean of each subset. That will result in a set of means to represent the data. Other methods can be: 
+kernel smoothers: They are similar to moving averages, but here the average is weighted and calculates in a certain bandwidth. The weight can be determined such that outliers are given less influence than the typical data points. One more method is called the running line. This is an improvement to the moving average, which works on fitting a line to the data instead of averaging it inside a variable width bin. 
+<li>What are residuals? Why is it a good idea to plot the residuals of your fit?</li>
+The residuals are the difference between the smoothed data and the actual data. 
+Looking at residuals gives a good indication of how proper the model is.
+When residuals are symmetric, do not exhibit a trend and lie on both sides of the zero.
+It is an indication that the smoothing is proper.
+A subset of the residuals that has a special observable trend is suggested to be different and should have further investigation.
+It could also be a reason to reconsider the smooth curve. 
+<li>Explain in your own words the point of the smooth tube in figure 3-7.</li>
+In this plot the data points are divided into two subsets.
+The first subset is the one that results in positive residuals, while the second is those data points with negative residuals. 
+The two subsets will lead to two different smooth curves, when applying the smoothing routines to each of them.
+There is a great likelihood that  most of the data points are falling between the two smooth curves.
+The distance between the two smooth curves is supposed to be stable through the whole tube to insure that the residuals are balanced around zero across the dataset.  
 
-  <li> The author of DAOST (Philipp Janert) likes KDEs (and think they're better than histograms)\
-	  .And I don't. I didn't give a detailed explanation in the video, but now that works to my advantage.
-	  I'll ask you guys to think about this and thereby create an excellent exercise: When can KDEs be misleading?</li>
-<p>A: In cases we choose incorrect bandwidth. If we choose too wide bandwidth 
-	  we lose details and information and it can mislead observer that there were data in 
-	places where should be gap.<p>
+<li>What kind of relationships will a semi-log plot help you discover?</li>
+ 
+In a semilogarithmic graph, one axis has a logarithmic scale and the other axis has a linear scale.
+Suppose we have a function and when we plot that function we can see upward and downward-sloping curves on the plot and it depends on the sign of Alpha and when we plot the logarithm of that function so we can see the points fall on the straight line on the plot.
+In this plot It does not matter how large we change the corresponding changes because all relative changes have the same size.
 
-  <li> I've discussed some strengths of the CDF - there are also weaknesses. Janert writes 
-	  "[CDFs] have less intuitive appeal than histograms or KDEs". What does he mean by that?</li>
-<p>A: You need to understand theory behind CDF to understand 
-	  and interpret what CDF is showing. 
-	  However once you understand CDF than it allow you to interpret with easy what fraction of points falls between 
-	 any two values and help us understand how imbalanced a distribution is. </p>
+<li>What kind of functions will loglog plots help you see?</li>
+           
+ In two dimensional graphs for estimating parameters from the numerical data we can use log log plot and if we have x axis and  y axis then by using loglog(x,y), 
+the axis units will be x and y but  the axis ticks scaled logarithmically. 
+It means in log-log graphs, both axes have a logarithmic scale.
+In loglog plot any function of the form “F(x)=constant⋅x^m” will have a straight line as its log–log graph representation, where the slope of the line is m.
 	
-<li>   What is a Quantile plot? What is it good for?</li>
-<p>A: It is basically CDF with switched x and y axes. </p>
-    <li>   How is a Probability plot defined? What is it useful for? Have you ever seen one before?</li>
- <p>A: A probability plot that we know that mostly as Q-Q plot and P-P plot is a graphical technique for comparing two data sets. It can be either two sets of empirical observations and one empirical set against other theoretical set. 
-For several competing distributions to see which provides the best fit , we can generate probability plot and it is the best choice for generating the highest correlation coefficient since it generates the straightest probability plot.
-The probability plot is useful for:
-	 <ul>
-  <li>   It provides a good fit to the data in a given distribution, such as the Weibull.</li>
-  <li>   It helps us to know what distribution best fits the data.</li>
-  <li>    We can see what are good estimates for the location and scale parameters of the chosen distribution.</li>
-</ul>
- We have seen probability plots in advanced Machine Learning and Non linear Signal Processing </p>
-<li>   One of the reasons I like DAOST is that Janert is so suspicious of mean, 
-	   median, and related summary statistics. Explain why one has to be careful when using those - 
-	   and why visualization of the full data is always better.</li>
-A: These summary statistics apply only under certain assumptions and are misleading. Mean, median, and related summary statistics apply only to distribution with single central peak, if this assumption is not fulfilled the summary statistic will be wrong. Such things as outliers can significantly shift with mean and variance. The visualisation allow us to easily spot clusters and outliers.
- <li> I love box plots. When are box plots most useful?</li>
-A: They combine lot of information in single graph. Box plots allow us to see if distribution is symmetric, how the weight is distributed between central peak and tails and outliers are not dropped. Most useful are when comparing several distributions against each other. 
+<li>What is banking and what element from our visual system does it use to help us see patterns? 
+What are potential problems with banking?</li>
+Banking is a graphical method to detect changes in curves by changing the relative lengths of the x-axis and y-axis 
+(the aspect ratio). Making the slope of the curve angular to the graph allows the observer to detect changes easier. 
+To make changes more distinguishable the slope of the curve should make 45 degree with the graph. In this case the most noticeable banking results are gained. However when changing the aspect ratio needed to achieve banking it too violent it leads to some distortion of the perception of the curve, then it is better to reconsider the way this curve is made. Another weak point of banking is that it sometimes fail to comply with the familiar proportional images humans are used to see and accept. 
 
- <li> The book doesn't mention violin plots. Are those better or worse than box plots? Why?</li>
-A: They are more informative than a plain box plot. They are useful when data have more than one peak (multimodal distribution). In this case a violin plot clearly shows the presence of different peaks, their position and relative amplitude. Disadvantage of violin plots is that they are less popular, their meaning can be harder to grasp for many readers not familiar with the violin plot representation.
+I think figure 3-14 makes an important point about linear fits that is rarely made. What is it?
+ The linear regression is not the best fit because it does not summarize the data( because it is not the aim of the linear regression model) as it is the best in prediction because it minimizes the error of responses of inputs sets and it can give us a faithful representation of outputs and so a careful prediction. As we saw in Figure 3-14, we got different result of by regressing x on y and  y on x. The same data set fits both regression lines, but the solutions are quite different and this eliminates best fitting of linear regression.
 
-		</ul>
+<li>Summarize the discussion of Graphical Analysis and Presentation Graphics on pp. 68-69 in your own words.</li>
+ 
+           Graphical Analysis and Presentation are two activities that need distinct methods and techniques. You can consider Graphical Analysis the first step of work and then Presentation Graphics the second step of work. In first step(Graphical analysis) we should find new information about basic data sets that is researched and are used Graphical methods but in second step(Presentation Graphics) that the results are already founded and we should communicate and presented  the founded information accurately. 
+In analysis we must continue the process and do not recreate and restart that at all because the amount of polishing is large. We should hold the predominant concerns but the presentation is opposite side of this fact because now we know the results already and we should present that and communicate that. However people know the result in this section but textual information is significant in this part and as all know a strong word always gives an effective presentation of graphics. It is important that readers understand what we mean and there are some useful and certain supplements for presentation:
+-Making the text and labels self explanatory by placing basic information on the graph. -Explaining the plots axis and selecting a suitable plot range. -Choosing an appropriate font. -Explaining error bars meaning. -Choosing a good format.             
+</lu>
 	</body>	
 </html>
