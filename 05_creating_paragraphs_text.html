@@ -52,19 +52,18 @@ For several competing distributions to see which provides the best fit , we can 
 The probability plot is useful for:
 	 <ul>
   <li>   It provides a good fit to the data in a given distribution, such as the Weibull.</li>
-   <li>   It helps us to know what distribution best fits the data.</li>
-    <li>    We can see what are good estimates for the location and scale parameters of the chosen distribution.</li>
+  <li>   It helps us to know what distribution best fits the data.</li>
+  <li>    We can see what are good estimates for the location and scale parameters of the chosen distribution.</li>
 <ul>
  We have seen probability plots in advanced Machine Learning and Non linear Signal Processing </p>
-    <li>   One of the reasons I like DAOST is that Janert is so suspicious of mean, 
+<li>   One of the reasons I like DAOST is that Janert is so suspicious of mean, 
 	   median, and related summary statistics. Explain why one has to be careful when using those - 
 	   and why visualization of the full data is always better.</li>
 A: These summary statistics apply only under certain assumptions and are misleading. Mean, median, and related summary statistics apply only to distribution with single central peak, if this assumption is not fulfilled the summary statistic will be wrong. Such things as outliers can significantly shift with mean and variance. The visualisation allow us to easily spot clusters and outliers.
-
-    <li>    I love box plots. When are box plots most useful?</li>
+ <li> I love box plots. When are box plots most useful?</li>
 A: They combine lot of information in single graph. Box plots allow us to see if distribution is symmetric, how the weight is distributed between central peak and tails and outliers are not dropped. Most useful are when comparing several distributions against each other. 
 
-    <li>    The book doesn't mention violin plots. Are those better or worse than box plots? Why?</li>
+ <li> The book doesn't mention violin plots. Are those better or worse than box plots? Why?</li>
 A: They are more informative than a plain box plot. They are useful when data have more than one peak (multimodal distribution). In this case a violin plot clearly shows the presence of different peaks, their position and relative amplitude. Disadvantage of violin plots is that they are less popular, their meaning can be harder to grasp for many readers not familiar with the violin plot representation.
 
 		</ul>
